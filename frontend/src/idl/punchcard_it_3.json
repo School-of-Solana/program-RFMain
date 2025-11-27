@@ -1,0 +1,268 @@
+{
+  "address": "9FtgoQ4gZoCSj6zk2LyUDH1FCk3UBxLFhhJaiVJ6adpr",
+  "metadata": {
+    "name": "punchcard_it_3",
+    "version": "0.1.0",
+    "spec": "0.1.0",
+    "description": "POC"
+  },
+  "instructions": [
+    {
+      "name": "clock_in",
+      "discriminator": [
+        206,
+        150,
+        221,
+        145,
+        122,
+        124,
+        77,
+        89
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "data_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "clock_intermittent_in",
+      "discriminator": [
+        127,
+        187,
+        131,
+        97,
+        14,
+        8,
+        2,
+        140
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "data_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "clock_intermittent_out",
+      "discriminator": [
+        34,
+        208,
+        165,
+        230,
+        13,
+        11,
+        112,
+        16
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "data_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "clock_lunch_in",
+      "discriminator": [
+        3,
+        245,
+        245,
+        112,
+        113,
+        66,
+        138,
+        184
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "data_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "clock_lunch_out",
+      "discriminator": [
+        92,
+        113,
+        181,
+        55,
+        228,
+        96,
+        122,
+        182
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "data_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "clock_out",
+      "discriminator": [
+        45,
+        156,
+        240,
+        66,
+        181,
+        57,
+        211,
+        196
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "data_account",
+          "writable": true
+        }
+      ],
+      "args": []
+    },
+    {
+      "name": "initialize",
+      "discriminator": [
+        175,
+        175,
+        109,
+        31,
+        13,
+        152,
+        155,
+        237
+      ],
+      "accounts": [
+        {
+          "name": "signer",
+          "writable": true,
+          "signer": true
+        },
+        {
+          "name": "system_program",
+          "address": "11111111111111111111111111111111"
+        },
+        {
+          "name": "data_account",
+          "writable": true,
+          "pda": {
+            "seeds": [
+              {
+                "kind": "arg",
+                "path": "seed"
+              }
+            ]
+          }
+        }
+      ],
+      "args": [
+        {
+          "name": "_seed",
+          "type": "i128"
+        }
+      ]
+    }
+  ],
+  "accounts": [
+    {
+      "name": "EmployeeData",
+      "discriminator": [
+        166,
+        195,
+        110,
+        33,
+        71,
+        96,
+        75,
+        28
+      ]
+    }
+  ],
+  "errors": [
+    {
+      "code": 6000,
+      "name": "AlreadyClockedIn",
+      "msg": "Already clocked in"
+    },
+    {
+      "code": 6001,
+      "name": "NotClockedIn",
+      "msg": "Not clocked in"
+    }
+  ],
+  "types": [
+    {
+      "name": "EmployeeData",
+      "type": {
+        "kind": "struct",
+        "fields": [
+          {
+            "name": "active",
+            "type": "bool"
+          },
+          {
+            "name": "shift_start_clock",
+            "type": "u64"
+          },
+          {
+            "name": "shift_end_clock",
+            "type": "u64"
+          },
+          {
+            "name": "intermittent_start_clock",
+            "type": "u64"
+          },
+          {
+            "name": "intermittent_end_clock",
+            "type": "u64"
+          },
+          {
+            "name": "lunch_start_clock",
+            "type": "u64"
+          },
+          {
+            "name": "lunch_end_clock",
+            "type": "u64"
+          }
+        ]
+      }
+    }
+  ]
+}
